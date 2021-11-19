@@ -1,0 +1,94 @@
+Using Bearer Token, you'll get the token from signature-api
+
+inquiry request POST /api/inquiry
+{
+    "cust_no": "string",
+    "product_code": "string",
+}
+
+inquiry success response
+{
+    "error_code": "string",
+    "message": "string",
+    "cust_no": "string",
+    "cust_name": "string",
+    "product_code": "string",
+    "amount": "string",
+    "period": "string",
+    "ref_no": "string",
+}
+
+
+payment request POST /api/payment
+{
+    "cust_no": "string",
+    "product_code": "string",
+    "ref_no": "string" //get from inquiry from inquiry response
+    "trx_id_reff": "string" //unique identifier from partner, eg: transaction_id
+}
+
+payment success response
+{
+    "error_code": "string",
+    "message": "string",
+    "cust_no": "string",
+    "cust_name": "string",
+    "product_code": "string",
+    "amount": "string",
+    "period": "string",
+    "ref_no": "string",
+    "trx_id_reff": "string"
+}
+
+advice request /api/advice
+{
+    "cust_no": "string",
+    "reff": "string", //get from inquiry from inquiry response
+    "trx_id_reff": "string" //unique identifier from partner, eg: transaction_id
+}
+
+advice response
+{
+    "error_code": "string",
+    "message": "string",
+    "cust_no": "string",
+    "cust_name": "string",
+    "product_code": "string",
+    "amount": "string",
+    "period": "string",
+    "sn": "string",
+    "trx_id_reff": "string"
+}
+
+=====
+signature request POST /signature
+{
+    "username": "string",
+    "password": "string" 
+}
+
+signature response
+{
+    "error_code": "string",
+    "message": "string",
+    "signature": "string"
+}
+
+
+========= failed response
+{
+    "error_code": "string",
+    "message": "string",
+}
+
+failed response
+{
+    "error_code": "string",
+    "message": "string",
+}
+
+
+===== Error Code
+100 : Success
+68 : Pending
+400 : Failed
